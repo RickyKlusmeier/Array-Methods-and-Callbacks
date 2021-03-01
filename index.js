@@ -80,13 +80,15 @@ hint: the strings returned need to exactly match the string in step 4.
 function getWinnersByYear(fifa, getYearsCB, getWinnersCB) {
 
    const winnerString = [];
-    const year = getYearsCB ;
     const country = getWinnersCB(fifa) ;
-    country.forEach((country, year) => winnerString.push('In ${year}, ${country} won the world cup!'));
+    const years = getYearsCB(fifa) ;
+    country.forEach(function (item, index){
+         winnerString.push(`In ${years[index]}, ${item} won the world cup!`);
+    });
      return winnerString;
 }
 
-console.log(getWinnersByYear(fifaData, getYears(fifaData), getWinners))
+console.log(getWinnersByYear(fifaData, getYears, getWinners))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use the higher order function getAverageGoals to do the following: 
